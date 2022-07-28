@@ -1,0 +1,110 @@
+
+    <div class="row">
+        <div class="col-lg-3 mat-elevation-z8">
+        <app-party-detail-side></app-party-detail-side>
+        
+    </div>
+        <div class="col-lg-9">
+            <div class="row" *ngFor="let party of getParty">
+            <div class="col-lg-4 align"><b>{{party.partyName}}</b><br>{{party.partyCategory}} {{party.mobile}}</div>
+           <div class="col-lg-5"></div>
+           <div class="col-lg-3">
+               <button class="btn btn-primary btn-lg" [routerLink]="['/purchase-invoice',party._id]" [queryParams]="{partyName:party.partyName}">Item Purchase</button>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+            <mat-tab-group mat-align-tabs="start">
+                
+
+                <div class="tabs">
+                <mat-tab label="Profile">
+                 <div class="col-lg-12 mb-4 align">
+                    <div class="row" *ngFor="let party of getParty">
+                        <div class="col-lg-4">
+                            <p class="col-title">Party Name</p><div class="col-value">{{party.partyName}}</div>
+                            
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="col-title">Mobile Number</p><div class="col-value"> {{party.mobile}}</div>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="col-title">Email</p><div class="col-value">{{party.email}}</div>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="row" *ngFor="let party of getParty">
+                        <div class="col-lg-4">
+                            <p class="col-title">Party Category</p><div class="col-value">{{party.partyCategory}}</div>
+                            
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="col-title">Opening Balance</p><div class="col-value">{{party.openBalance}}</div>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div class="row" *ngFor="let party of getParty">
+                        <div class="col-lg-6">
+                            <p class="col-title">GSTIN</p><div class="col-value">{{party.gstin}}</div>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="col-title">Place of Supply</p><div class="col-value">{{party.placeOfSupply}}</div>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+
+                    <div class="row" *ngFor="let party of getParty">
+                        <div class="col-lg-6">
+                            <p class="col-title">Credit Period</p><div class="col-value">{{party.creditPeriod}}</div>
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="col-title">Credit Limit</p><div class="col-value">{{party.creditLimit}}</div>
+                        </div>
+                    </div>
+
+                 </div>
+                </mat-tab>
+                <mat-tab label="Transaction">
+                    <div class="col-lg-12 mb-4 align">
+                       <table class="table mat-elevation-z8 table-hover">
+                           <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>DATE</th>
+                                  <th>PARTY NAME</th>
+                                  <th>TYPE</th>
+                                  <th>AMOUNT</th>
+                                  
+                              </tr>
+                           </thead>
+                           <tbody>
+                                 <tr *ngFor="let transection of getAllTransData;let i=index">
+                                     <td>{{i+1}}</td>
+                                     <td>{{transection.date}}</td>
+                                     <td>{{transection.partyName}}</td>
+                                     <td>{{transection.type}}</td>
+                                     <td>{{transection.payment | currency:'INR'}}</td>
+                                 </tr>
+                           </tbody>
+
+                       </table>
+                    </div>
+                 <mat-divider></mat-divider>
+
+                </mat-tab>
+                
+                
+                 <mat-divider></mat-divider>
+
+                </div>
+                
+                </mat-tab-group></div>
+            </div>
+
+        
+    </div>

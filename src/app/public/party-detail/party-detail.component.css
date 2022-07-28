@@ -1,0 +1,39 @@
+.align{
+    
+    margin-top: 20px;
+}
+.col-title{
+    font-size: 14px;
+    color: #687e96;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.col-value{
+    font-size: 14px;
+    color: #28313b;
+    padding-bottom: 10px;
+}
+.dt{
+    border: 2px solid #687e96;
+    text-align: right;
+    padding: 8px 8px 8px 8px;
+
+}
+.col-align{
+    text-align: center;
+}
+.btn-btn{
+    color: #fff;
+    border: 1px solid #158242;
+    background-color: #13aa52;
+    background-image: linear-gradient(-180deg,#13aa52 0,#18964c 100%);
+    box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 15%);
+}
+.is-xs{
+    height: 22px;
+    font-size: 11px;
+    line-height: 21px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0 8px;
+}

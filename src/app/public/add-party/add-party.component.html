@@ -1,0 +1,168 @@
+<mat-toolbar class="navbar">
+    <mat-toolbar-row>
+     <span class="dash">My App</span>
+     <span class="example-spacer"></span>
+     <div class="btn1">
+     <button mat-raised-button class="btn">save & new</button>
+     <button mat-raised-button class="btn" style="margin-left: 15px;">save</button>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<div class="container space">
+    <form [formGroup]="formData" (ngSubmit)="partySubmit()">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+            <label>Party Name
+                 <input type="text" name="partyName" formControlName="partyName" class="form-control" placeholder="Enter Name">
+            </label>
+            <span style="color:red" *ngIf="partyName && partyName.invalid && (partyName.dirty || partyName.touched)">Name is Required Here.</span>
+            
+        </div>
+    </div>
+        <div class="col-lg-3">
+            <label>Mobile Number
+                <input type="text" name="mobile" formControlName="mobile" class="form-control" placeholder="Enter Mobile Number">
+           </label>
+           <span style="color:red" *ngIf="mobile && mobile.invalid && (mobile.dirty || mobile.touched)">Name is Required Here.</span>
+           
+            
+        </div>
+        <div class="col-lg-3">
+            <label>Email
+                <input type="email" name="" formControlName="email" class="form-control" placeholder="Enter Email">
+           </label>
+           <span style="color:red" *ngIf="email && email.invalid && (email.dirty || email.touched)">Name is Required Here.</span>
+           <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+           
+        </div>
+   
+    </div>
+
+
+    <!-- Opening Balance -->
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-3">
+                <label>Opening Balance</label>
+                    <input type="text" name=""  formControlName="openBalance" class="form-control">
+                    <!-- <select  formControlName="NoOfVehical" (change)="updateVehical($event)" id="disabledSelect" class="form-select">
+                        <option *ngFor="let data of vehicals" [ngValue]="data">{{data}}</option>
+                        
+                      </select> -->
+                      <span style="color:red" *ngIf="openBalance && openBalance.invalid && (openBalance.dirty || openBalance.touched)">Name is Required Here.</span>
+           <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+           
+                      
+        </div>
+        <div class="col-lg-3">
+            <label>Balance Type</label>
+            <select formControlName="balanceType" name="" (change)="updateBalance($event)" class="form-control form-select">
+                <option *ngFor="let data of balancetype">{{data}}</option>
+                
+            </select> 
+            <span style="color:red" *ngIf="balanceType && balanceType.invalid && (balanceType.dirty || balanceType.touched)">Name is Required Here.</span>
+           <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+           
+        </div>
+    </div>
+
+      <!-- Party Types -->
+   <mat-divider></mat-divider>
+   <div class="row mt-2">
+       <div class="col-lg-2">
+           <label>Party Type
+            <select formControlName="partyType" name=""(change)="updatePartyType($event)" class="form-control form-select">
+                <option *ngFor="let party of partytype">{{party}}</option>
+            </select>
+            <span style="color:red" *ngIf="partyType && partyType.invalid && (partyType.dirty || partyType.touched)">Name is Required Here.</span>
+            <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+            
+        </label>
+       </div>
+
+       <div class="col-lg-2">
+           <label>Party Category
+        <select  formControlName="partyCategory" name="" (change)="updateCategory($event)" class="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+            
+            <option *ngFor="let category of partyCategories">{{category}}</option>
+          </select>
+          <span style="color:red" *ngIf="partyCategory && partyCategory.invalid && (partyCategory.dirty || partyCategory.touched)">Name is Required Here.</span>
+          <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+          
+        </label>
+       </div>
+       <div class="col-lg-2">
+           <button class="btn" style="margin-top:25px;border:2px solid blue" (click)="createCategory()">Create Category</button>
+       </div>
+       <div class="col-lg-2">
+        <label>GSTIN
+            <input type="text" formControlName="gstin" class="form-control" placeholder="ex.. xxx1423cx">
+         </label>
+       </div>
+       
+       <div class="col-lg-2">
+        <label>PAN Number
+            <input type="text" formControlName="pan" class="form-control" placeholder="Enter PAN Number">
+         </label>
+       </div>
+       <div class="col-lg-2">
+        <label>Place of Supply
+            <select  formControlName="placeOfSupply" (change)="updateplaceOfSupply($event)" class="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option *ngFor="let place of placeOfSupplys">{{place}}</option>
+              </select>
+              
+            </label>
+       </div>
+
+   </div>
+
+
+    <!-- address -->
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <label for="floatingTextarea2">Billing Address</label>
+            <div class="form-floating">
+                <textarea formControlName="billAdr" class="form-control" placeholder="Enter billing address" id="floatingTextarea2" style="height: 100px"></textarea>
+              </div>
+          <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+          
+        </div>
+        <span style="color:red" *ngIf="billAdr && billAdr.invalid && (billAdr.dirty || billAdr.touched)">Name is Required Here.</span>
+
+
+        <div class="col-lg-6">
+            <label for="floatingTextarea2">Shipping Address</label>
+            <div class="form-floating">
+                <textarea formControlName="shippingAdr" class="form-control" placeholder="Enter shipping address" id="floatingTextarea2" style="height: 100px"></textarea>
+                
+              </div>
+              <span style="color:red" *ngIf="shippingAdr && shippingAdr.invalid && (shippingAdr.dirty || shippingAdr.touched)">Name is Required Here.</span>
+          <!-- <small id="emailHelp" class="form-text">Please enter full name of Medicin.</small> -->
+          
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <!-- Credit Period -->
+    <div class="row mt-3">
+        <div class="col-lg-3 space-b">
+            <label>Credit Period</label>
+            <input type="text" formControlName="creditPeriod" class="form-control" placeholder="Days">
+        </div>
+        <div class="col-lg-3 space-b">
+            <label>Credit Limit</label>
+            <input type="text" formControlName="creditLimit" class="form-control" placeholder="Rs. 0">
+        </div>
+        <!-- <div class="col-lg-3 space-b">
+            <label>User Id</label>
+            <input type="text" formControlName="_userId" class="form-control" placeholder="User Id">
+        </div> -->
+        <button mat-raised-button class="btn btn-primary submitbtn">save</button>
+    </div>
+   
+</form>
+
+</div>

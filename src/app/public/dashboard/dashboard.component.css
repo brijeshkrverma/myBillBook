@@ -1,0 +1,28 @@
+.navbar{
+ 
+    height: auto;
+    color: #fff;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 4px, rgb(0 0 0 / 30%) 0px 7px 13px -3px, rgb(195 30 95) 0px -3px 0px inset;
+   position: fixed;
+   top:0px;
+   left: 0px;
+   right: 0px;
+   z-index: 10000000;
+  }
+  .dash{
+      font-size: large 70px;
+      margin-left: 37%;
+      color: white;
+      text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  }
+  
+.fix{
+   position: fixed;
+        /* z-index: 10000000000;
+        width: 26%; */
+        margin-top: 80px;
+    }
+   
+
+
+ 

@@ -1,0 +1,38 @@
+
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4"><h5 class="mt-2">Party</h5></div>
+        <div class="col-lg-6">
+            <button class="btn-btn is-xs mt-2" [routerLink]="['/add-party']"> +Create Party</button>
+        </div>
+    </div>
+    <div class="row">
+    <mat-tab-group mat-align-tabs="start">
+        <div class="tabs">
+        <mat-tab label="All">
+         <div class="col-lg-12 mb-4 col-align" *ngFor="let party of getAllparty">
+            <a [routerLink]="['/party-detail/partys', party._id]"> {{party.partyName}}</a>
+             
+         <mat-divider class="mt-4"></mat-divider>
+
+         </div>
+        </mat-tab>
+        <mat-tab label="To Pay">
+            <div class="col-lg-12 mb-4 col-align" >
+              <!-- {{party.partyName}}</a> -->
+            </div>
+         <mat-divider></mat-divider>
+
+        </mat-tab>
+        <mat-tab label="To Collect">
+            <div class="col-lg-12 mb-4 col-align" >
+                <!-- {{party.partyName}} -->
+            </div>
+         <mat-divider></mat-divider>
+
+        </mat-tab>
+        </div>
+        </mat-tab-group>
+    </div>
+

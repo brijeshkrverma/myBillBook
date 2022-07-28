@@ -1,0 +1,36 @@
+.sidenav{
+    background-color: #15213a;
+   /* width: 100%; */
+   /* height: auto; */
+}
+.image{
+    margin-left: 30%;
+    height: 50px;
+    width:50px;
+    border-radius: 50%;
+  margin-top: 20px;
+  }
+  .settings{
+      color: white;
+      margin-top: 20px;
+  }
+  .Username{
+      color: white;
+      margin-top: 23px;
+      font-size: 15px;
+  }
+  .icons{
+      color:white;
+      opacity: 0.5;
+  }
+
+  .icons:hover{
+      color: white;
+      opacity: 1;
+  }
+
+
+
+
+
+  

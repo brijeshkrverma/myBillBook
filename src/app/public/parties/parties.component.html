@@ -1,0 +1,119 @@
+
+<mat-toolbar class="navbar">
+    <mat-toolbar-row>
+     <span class="dash">My App</span>
+     <span class="example-spacer"></span>
+     <button mat-raised-button color="primary" class="btn1"routerLink="/add-party" >+ Create Party</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container maggin">
+    <div class="row">
+        <div class="col-lg-12">
+           <input type="text" class="form-control" [(ngModel)]="allSearch" [ngModelOptions]="{standalone: true}" placeholder="Search">
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-12">
+            <mat-tab-group mat-align-tabs="start">
+                <div class="tabs">
+                <mat-tab label="All">
+
+                    <!-- For All Table -->
+                    
+                    <table class="table mat-elevation-z8 table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Mobile</th>
+                          <th scope="col">Balance Type</th>
+                          <th scope="col">Balance</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                    <!-- 'partyName', 'partyCategory', 'mobile','balanceType','openBalance' -->
+
+                        <tr *ngFor="let party of getAllparty | filter:allSearch;let i=index">
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{party.partyName}}</td>
+                          <td>{{party.partyCategory}}</td>
+                          <td>{{party.mobile}}</td>
+                          <td>{{party.balanceType}}</td>
+                          <td>{{party.openBalance}}</td>
+                        <button class="btn btn-primary" [routerLink]="['/party-detail',party._id]"  [queryParams]="{partyName:party.partyName}">Click</button>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                </mat-tab>
+                <mat-tab id="link" label="To Collect"> 
+
+                  <table class="table mat-elevation-z8 table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Balance Type</th>
+                        <th scope="col">Balance</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr *ngFor="let party of getAllcollect | filter:allSearch;let i=index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{party.partyName}}</td>
+                        <td>{{party.partyCategory}}</td>
+                        <td>{{party.mobile}}</td>
+                        <td>{{party.balanceType}}</td>
+                        <td>{{party.openBalance}}</td>
+                        <button class="btn btn-primary" [routerLink]="['/party-detail',party._id]"  [queryParams]="{partyName:party.partyName}">Click</button>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                 </mat-tab> 
+                <mat-tab label="To Pay" #topay> 
+
+
+                  <table class="table mat-elevation-z8 table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Balance Type</th>
+                        <th scope="col">Balance</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr *ngFor="let party of getAllpay | filter:allSearch;let i=index">
+                        
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{party.partyName}}</td>
+                        <td>{{party.partyCategory}}</td>
+                        <td>{{party.mobile}}</td>
+                        <td>{{party.balanceType}}</td>
+                        <td>{{party.openBalance}}</td>
+                        <button class="btn btn-primary" [routerLink]="['/party-detail',party._id]"  [queryParams]="{partyName:party.partyName}">Click</button>
+                      
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </mat-tab> 
+                </div>
+              </mat-tab-group>
+        </div>
+    </div>
+
+</div>

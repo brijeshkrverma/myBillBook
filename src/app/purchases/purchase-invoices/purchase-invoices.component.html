@@ -1,0 +1,118 @@
+<div class="container mt-5">
+    
+<mat-card>
+    <div class="row" *ngFor="let purchase of purchaseInvoice">
+        <!-- <div class="col-lg-2">Add Comapany Logo</div> -->
+        <div class="col-lg-3" ><span style="color: red;font-size: 20;"><i><u>{{purchase.name}}</u></i></span><br> <span><b>Email:</b></span>&nbsp;{{purchase.email}}</div>
+        <!-- <div class="col-lg-5"></div> -->
+       
+            <div class="col-lg-4">
+                <div *ngIf="currDiv===false">
+                <button class="btn btn-success" (click)="openPDF()">Download</button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div *ngIf="currDiv===false">
+                <button class="btn btn-danger" (click)="sendMail()">Send Mail</button>
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <button class="btn btn-primary" (click)="ShowDiv()">Save</button>
+        </div>
+        
+    </div>
+   
+</mat-card>
+
+<mat-card class="mt-3" id="htmlData">
+<div class="row" *ngFor="let party of getPartyName" >
+    <div class="col-lg-8">
+        
+            <mat-card-header>Bill Form</mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content class="mt-4">
+                <b>{{party.partyName}}</b><br>
+                <small>Address:&nbsp;</small>{{party.shippingAdr}}<br>
+                <small>Place of Supply:&nbsp;</small>{{party.placeOfSupply}}
+
+            </mat-card-content>
+        
+    </div>
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col-lg-12">
+           <small>Purchase Date</small><br>
+           <input type="date" class="form-control">
+            </div>
+        </div>
+   </div>
+</div>
+
+    
+
+<mat-divider></mat-divider>
+<div *ngIf="currDiv===true">
+<table class="table mat-elevation-z8 table-hover">
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>ITEM</th>
+        <th>HSN/SAC</th>
+        <th>PRICE/ITEM(Rs.)</th>
+        <th>TAX</th>
+        <th>AMOUNT(Rs.)</th>
+
+    </tr>
+</thead>
+<tbody >
+    
+    <tr *ngIf="item">
+        <td>1</td>
+        <td class="d-flex">
+            <label>{{item}}</label>
+            <input type="text" class="form-control" placeholder="Description">
+        </td>
+          
+        <td class=" align-items-center tab-width"><input type="number" [(ngModel)]="quantity" style="width: 50%;" name="quantity" class="form-control"><span>PCS</span></td>
+        <td class="tab-width"><input type="number" [(ngModel)]="purchase" class="form-control "></td>
+        <td class="tab-width"><input type="number" [(ngModel)]="gst" class="form-control " placeholder="TAX IN %"></td>
+        <td>{{((gst/100)*purchase*quantity)+purchase*quantity |currency:'INR'}}</td>
+    </tr>
+</tbody>
+
+</table>
+<button class="btn btn-primary btn-block mb-4" (click)="openDialog()">ADD ITEM</button>
+</div>
+
+
+<div class="row" style="background-color: aliceblue; height: 50px;">
+    <div class="col-lg-6">SUBTOTAL</div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-3" >{{((gst/100)*purchase*quantity)+purchase*quantity | currency:'INR'}}</div>   
+
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-lg-10">
+        Taxable Amount<br><br>
+        GST {{gst/100 |percent}} <br> <br>
+        
+    </div>
+    <div class="col-lg-2">{{purchase*quantity |currency:'INR'}} <br> <br>{{(gst/100)*purchase*quantity | currency:'INR'}}</div>
+</div>
+<!-- <mat-divider></mat-divider> -->
+
+<div class="row mt-3 mb-5">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">
+        <b>Total Amount&nbsp;&nbsp;&nbsp;&nbsp;{{((gst/100)*purchase*quantity)+purchase*quantity | currency:'INR'}}</b>
+    </div>
+</div>
+
+
+
+
+</mat-card>
+</div>

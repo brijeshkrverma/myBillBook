@@ -1,0 +1,30 @@
+<div>
+ <mat-toolbar class="navbar" role="banner" data-spy="affix" data-offset-top="197">
+     <mat-toolbar-row>
+      <button class="btn gap" (click)="slide.toggle()">Open Sidebar</button>
+      <span class="dash">MyBillBook</span>
+      <span class="example-spacer"></span>
+     </mat-toolbar-row>
+ </mat-toolbar>
+
+    <mat-sidenav-container>             
+      <mat-sidenav #slide opened mode="side" position="start" class="slide fix">
+        <app-sidenav></app-sidenav>
+      </mat-sidenav>
+      <mat-sidenav-content>
+      
+  
+        <div class="main_content">
+          <div class="container">
+        
+          <app-content></app-content>
+        </div>
+      </div>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+    
+
+    
+

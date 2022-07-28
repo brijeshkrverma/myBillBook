@@ -1,0 +1,122 @@
+<mat-toolbar class="navbar">
+    <mat-toolbar-row>
+     <span class="dash">My App</span>
+     <span class="example-spacer"></span>
+     <div class="btn1">
+     <button mat-raised-button class=" b1" routerLink="/add-item" style="margin-left: 15px;">+ create item</button>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="container space">
+    <div class="row">
+        <div class="col-lg-2">
+            <input type="text" class="form-control" #pic placeholder="Search">
+            <button class="btn btn-dark" (click)="filterData(pic.value)">Click</button>
+        </div>
+        <div class="col-lg-2">
+            <button class="form-control btn btn-danger" >Show Low Stock</button>
+        </div>
+        <div class="col-lg-3">
+           
+                <select class="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Search category</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <button class=" btn btn-primary">button</button>
+                  </select>
+               
+        </div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-2">
+            <select class="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Reports</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+        </div>
+
+    </div>
+
+    <!-- Table -->
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="item">
+          <th mat-header-cell *matHeaderCellDef> ITEM NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.item}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="itemDesc">
+          <th mat-header-cell *matHeaderCellDef> ITEM CODE </th>
+          <td mat-cell *matCellDef="let element"> {{element.itemDesc}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="openingStock">
+          <th mat-header-cell *matHeaderCellDef> STOCK QTY </th>
+          <td mat-cell *matCellDef="let element"> {{element.openingStock}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> STOCK VEALU </th>
+          <td mat-cell *matCellDef="let element"> {{element.openingStock*element.salesPrice | currency:'INR'}} </td>
+        </ng-container>
+
+         <!-- Symbol Column -->
+         <ng-container matColumnDef="sel">
+          <th mat-header-cell *matHeaderCellDef>SELLING PRICE</th>
+          <td mat-cell *matCellDef="let element"> {{element.salesPrice | currency:'INR'}} </td>
+        </ng-container>
+        
+         <!-- PURCHASE PRICE Column -->
+         <ng-container matColumnDef="purchase">
+          <th mat-header-cell *matHeaderCellDef> PURCHASE PRICE </th>
+          <td mat-cell *matCellDef="let element"> {{element.purchasePrice | currency:'INR'}} </td>
+        
+        </ng-container>
+
+         
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef > Actions </th>
+          <td mat-cell *matCellDef="let element">
+               <mat-icon style="color:rgb(18, 18, 137);" [routerLink]="['/edit-item',element._id]">edit</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon style="color:rgb(146, 11, 11)">delete</mat-icon>
+
+          </td>
+      </ng-container>
+
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+            (click)="selection.toggle(row)" (click)="selectRow(row)">
+        </tr>
+      </table>
+      <br><br>
+
+      
+</div>
+

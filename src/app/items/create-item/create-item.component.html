@@ -1,0 +1,44 @@
+<div class="container border" style="margin:20px 20px 20px 20px;padding: 20px 20px 20px 20px;">
+    <form [formGroup]="itemForm" (ngSubmit)="createItem()">
+    <div class="row">
+        <label>Item Name</label>
+        <input class="form-control" formControlName="item" type="text" placeholder="Item Name">
+    </div>
+    <div class="row">
+        <label>Item Description</label>
+        <textarea class="form-control" formControlName="itemDesc" placeholder="Enter Description"></textarea>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Opening Stock</label>
+            <input class="form-control" type="number" formControlName="openingStock" placeholder="opening stock">
+        </div>
+        <div class="col-lg-6">
+            <label>Date</label>
+            <input class="form-control" type="date" formControlName="date">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label>Sales Paice</label>
+            <input class="form-control" type="number" formControlName="salesPrice" placeholder="sales price">
+        </div>
+        <div class="col-lg-6">
+            <label>Purchase Price</label>
+            <input class="form-control" type="number" formControlName="purchasePrice" placeholder="Purchase Price">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <label>HSN Cole</label>
+            <input class="form-control" type="text" formControlName="hsnCode" placeholder="HSN Code">
+        </div>
+        <div class="col-lg-6">
+            <label>GST</label>
+            <!-- select box use -->
+            <input class="form-control" type="text" formControlName="gst" placeholder="GST">
+        </div>
+        <button class="btn btn-primary btn-block btn-lg mt-5">Create Item</button>
+    </div>
+</form>
+</div>
